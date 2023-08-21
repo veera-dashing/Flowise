@@ -117,7 +117,7 @@ const Chatflows = () => {
             </Stack>
             <Grid container spacing={gridSpacing}>
                 {!isLoading &&
-                    getAllChatflowsApi.data &&
+                    getAllChatflowsApi.data && getAllChatflowsApi.data.length>0 &&
                     getAllChatflowsApi.data.map((data, index) => (
                         <Grid key={index} item lg={3} md={4} sm={6} xs={12}>
                             <ItemCard onClick={() => goToCanvas(data)} data={data} images={images[data.id]} />
