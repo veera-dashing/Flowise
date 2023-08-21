@@ -114,7 +114,6 @@ const Marketplace = () => {
             try {
                 const chatflows = getAllChatflowsMarketplacesApi.data
                 const images = {}
-                console.log('chatflows -----', chatflows)
                 for (let i = 0; i < chatflows.length; i += 1) {
                     const flowDataStr = chatflows[i].flowData
                     if (flowDataStr) {
