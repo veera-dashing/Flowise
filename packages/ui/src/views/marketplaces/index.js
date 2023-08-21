@@ -169,6 +169,7 @@ const Marketplace = () => {
                             <Grid container spacing={gridSpacing}>
                                 {!isToolsLoading &&
                                     getAllToolsMarketplacesApi.data &&
+                                    Array.isArray(getAllToolsMarketplacesApi.data) &&
                                     getAllToolsMarketplacesApi.data.map((data, index) => (
                                         <Grid key={index} item lg={3} md={4} sm={6} xs={12}>
                                             <ItemCard data={data} onClick={() => goToTool(data)} />
@@ -190,18 +191,21 @@ const Marketplace = () => {
                         <div>No Marketplace Yet</div>
                     </Stack>
                 )}
-                {!isToolsLoading && (!getAllToolsMarketplacesApi.data || getAllToolsMarketplacesApi.data.length === 0) && (
-                    <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
-                        <Box sx={{ p: 2, height: 'auto' }}>
-                            <img
-                                style={{ objectFit: 'cover', height: '30vh', width: 'auto' }}
-                                src={WorkflowEmptySVG}
-                                alt='WorkflowEmptySVG'
-                            />
-                        </Box>
-                        <div>No Marketplace Yet</div>
-                    </Stack>
-                )}
+                {!isToolsLoading &&
+                    (!getAllToolsMarketplacesApi.data ||
+                        !Array.isArray(getAllToolsMarketplacesApi.data) ||
+                        getAllToolsMarketplacesApi.data.length === 0) && (
+                        <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
+                            <Box sx={{ p: 2, height: 'auto' }}>
+                                <img
+                                    style={{ objectFit: 'cover', height: '30vh', width: 'auto' }}
+                                    src={WorkflowEmptySVG}
+                                    alt='WorkflowEmptySVG'
+                                />
+                            </Box>
+                            <div>No Marketplace Yet</div>
+                        </Stack>
+                    )}
             </MainCard>
             <ToolDialog
                 show={showToolDialog}
