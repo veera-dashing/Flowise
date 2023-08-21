@@ -83,13 +83,16 @@ const Chatflows = () => {
                 const images = {}
                 for (let i = 0; i < chatflows.length; i += 1) {
                     const flowDataStr = chatflows[i].flowData
-                    const flowData = JSON.parse(flowDataStr)
-                    const nodes = flowData.nodes || []
-                    images[chatflows[i].id] = []
-                    for (let j = 0; j < nodes.length; j += 1) {
-                        const imageSrc = `${baseURL}/api/v1/node-icon/${nodes[j].data.name}`
-                        if (!images[chatflows[i].id].includes(imageSrc)) {
-                            images[chatflows[i].id].push(imageSrc)
+                    console.log('flowDataStr---', flowDataStr)
+                    if (flowDataStr) {
+                        const flowData = JSON.parse(flowDataStr)
+                        const nodes = flowData.nodes || []
+                        images[chatflows[i].id] = []
+                        for (let j = 0; j < nodes.length; j += 1) {
+                            const imageSrc = `${baseURL}/api/v1/node-icon/${nodes[j].data.name}`
+                            if (!images[chatflows[i].id].includes(imageSrc)) {
+                                images[chatflows[i].id].push(imageSrc)
+                            }
                         }
                     }
                 }
