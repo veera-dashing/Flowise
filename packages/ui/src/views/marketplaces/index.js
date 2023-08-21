@@ -114,10 +114,10 @@ const Marketplace = () => {
             try {
                 const chatflows = getAllChatflowsMarketplacesApi.data
                 const images = {}
-                console.log('chatflows -----', chatflows);
+                console.log('chatflows -----', chatflows)
                 for (let i = 0; i < chatflows.length; i += 1) {
                     const flowDataStr = chatflows[i].flowData
-                    if(flowDataStr){
+                    if (flowDataStr) {
                         const flowData = JSON.parse(flowDataStr)
                         const nodes = flowData.nodes || []
                         images[chatflows[i].id] = []
@@ -128,7 +128,6 @@ const Marketplace = () => {
                             }
                         }
                     }
-
                 }
                 setImages(images)
             } catch (e) {
