@@ -127,20 +127,22 @@ const Tools = () => {
                 <Grid container spacing={gridSpacing}>
                     {!getAllToolsApi.loading &&
                         getAllToolsApi.data &&
+                        Array.isArray(getAllToolsApi.data) &&
                         getAllToolsApi.data.map((data, index) => (
                             <Grid key={index} item lg={3} md={4} sm={6} xs={12}>
                                 <ItemCard data={data} onClick={() => edit(data)} />
                             </Grid>
                         ))}
                 </Grid>
-                {!getAllToolsApi.loading && (!getAllToolsApi.data || getAllToolsApi.data.length === 0) && (
-                    <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
-                        <Box sx={{ p: 2, height: 'auto' }}>
-                            <img style={{ objectFit: 'cover', height: '30vh', width: 'auto' }} src={ToolEmptySVG} alt='ToolEmptySVG' />
-                        </Box>
-                        <div>No Tools Created Yet</div>
-                    </Stack>
-                )}
+                {!getAllToolsApi.loading &&
+                    (!getAllToolsApi.data || !Array.isArray(getAllToolsApi.data) || getAllToolsApi.data.length === 0) && (
+                        <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
+                            <Box sx={{ p: 2, height: 'auto' }}>
+                                <img style={{ objectFit: 'cover', height: '30vh', width: 'auto' }} src={ToolEmptySVG} alt='ToolEmptySVG' />
+                            </Box>
+                            <div>No Tools Created Yet</div>
+                        </Stack>
+                    )}
             </MainCard>
             <ToolDialog
                 show={showDialog}

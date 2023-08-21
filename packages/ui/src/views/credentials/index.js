@@ -180,7 +180,7 @@ const Credentials = () => {
                         Add Credential
                     </StyledButton>
                 </Stack>
-                {credentials.length <= 0 && (
+                {(!Array.isArray(credentials) || credentials.length <= 0) && (
                     <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
                         <Box sx={{ p: 2, height: 'auto' }}>
                             <img
@@ -192,7 +192,7 @@ const Credentials = () => {
                         <div>No Credentials Yet</div>
                     </Stack>
                 )}
-                {credentials.length > 0 && (
+                {Array.isArray(credentials) && credentials.length > 0 && (
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }} aria-label='simple table'>
                             <TableHead>

@@ -158,7 +158,6 @@ const Marketplace = () => {
                                 {!isChatflowsLoading &&
                                     getAllChatflowsMarketplacesApi.data &&
                                     Array.isArray(getAllChatflowsMarketplacesApi.data) &&
-                                    Array.isArray(getAllChatflowsMarketplacesApi.data) &&
                                     getAllChatflowsMarketplacesApi.data.map((data, index) => (
                                         <Grid key={index} item lg={3} md={4} sm={6} xs={12}>
                                             <ItemCard onClick={() => goToCanvas(data)} data={data} images={images[data.id]} />

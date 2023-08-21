@@ -186,7 +186,7 @@ const APIKey = () => {
                         <div>No API Keys Yet</div>
                     </Stack>
                 )}
-                {apiKeys.length > 0 && (
+                {Array.isArray(apiKeys) && apiKeys.length > 0 && (
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }} aria-label='simple table'>
                             <TableHead>
